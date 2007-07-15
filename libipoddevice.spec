@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Biblioteka do wykrywania iPodów
 Name:		libipoddevice
 Version:	0.5.3
 Release:	1
-License:	GPL v2
+License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://banshee-project.org/files/libipoddevice/%{name}-%{version}.tar.gz
 # Source0-md5:	b72471b15253a1c779d4ca9991a17fd8
@@ -12,10 +12,11 @@ BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-devel
 BuildRequires:	dbus-glib-devel >= 0.71
+BuildRequires:	glib2-devel >= 1:2.6.0
 BuildRequires:	hal-devel >= 0.5.7.1
-BuildRequires:	libgtop-devel
+BuildRequires:	libgtop-devel >= 2.12.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	pkgconfig
 BuildRequires:	sg3_utils-devel
 Requires:	%{name}-libs = %{version}-%{release}
@@ -38,6 +39,9 @@ co daje aplikacji dostęp do właściwości i możliwości iPoda.
 Summary:	Shared libipoddevice library
 Summary(pl.UTF-8):	Biblioteka współdzielona libipoddevice
 Group:		Libraries
+Requires:	glib2 >= 1:2.6.0
+Requires:	hal-libs >= 0.5.7.1
+Requires:	libgtop >= 2.12.0
 
 %description libs
 Shared libipoddevice library.
@@ -51,6 +55,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libipoddevice
 Group:		Development/Libraries
 Requires:	%{name}-libs = %{version}-%{release}
 Requires:	dbus-glib-devel >= 0.71
+Requires:	glib2-devel >= 1:2.6.0
 Requires:	hal-devel >= 0.5.7.1
 
 %description devel
@@ -59,6 +64,18 @@ library.
 
 %description devel -l pl.UTF-8
 Ten pakiet zawiera pliki nagłówkowe biblioteki libipoddevice.
+
+%package static
+Summary:	Static libipoddevice library
+Summary(pl.UTF-8):	Statyczna biblioteka libipoddevice
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static libipoddevice library.
+
+%description static -l pl.UTF-8
+Statyczna biblioteka libipoddevice.
 
 %prep
 %setup -q
@@ -69,7 +86,8 @@ Ten pakiet zawiera pliki nagłówkowe biblioteki libipoddevice.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	EJECT_PATH=/usr/bin/eject
 %{__make}
 
 %install
@@ -101,3 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libipoddevice.la
 %{_includedir}/ipoddevice
 %{_pkgconfigdir}/ipoddevice.pc
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/libipoddevice.a
