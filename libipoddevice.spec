@@ -2,7 +2,7 @@ Summary:	Library to detect iPods
 Summary(pl.UTF-8):	Biblioteka do wykrywania iPodów
 Name:		libipoddevice
 Version:	0.5.3
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://banshee-project.org/files/libipoddevice/%{name}-%{version}.tar.gz
@@ -106,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/ipod
-%{_libdir}/hal/hal-ipod-info
+%attr(755,root,root) %{_libdir}/hal/hal-ipod-info
 %{_datadir}/hal/fdi/policy/20thirdparty/20-ipod-info.fdi
 
 %files libs
