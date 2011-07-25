@@ -5,10 +5,10 @@ Version:	0.5.3
 Release:	4
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://banshee-project.org/files/libipoddevice/%{name}-%{version}.tar.gz
+Source0:	http://download.banshee.fm/legacy/libipoddevice/%{name}-%{version}.tar.gz
 # Source0-md5:	b72471b15253a1c779d4ca9991a17fd8
 Patch0:		%{name}-sgutils.patch
-URL:		http://banshee-project.org/Libipoddevice
+URL:		http://download.banshee.fm/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake
 BuildRequires:	dbus-devel
@@ -31,8 +31,8 @@ applications, and along with objects representing an iPod, which gives
 the application access to properties and features of an iPod.
 
 %description -l pl.UTF-8
-libipoddevice to specyficzna dla urządzenia warstwa dla urządzeń
-Apple iPod. Zapewnia wysyłanie powiadomień o specyficznych dla iPoda
+libipoddevice to specyficzna dla urządzenia warstwa dla urządzeń Apple
+iPod. Zapewnia wysyłanie powiadomień o specyficznych dla iPoda
 zdarzeniach HAL do aplikacji wraz z obiektami reprezentującymi iPoda,
 co daje aplikacji dostęp do właściwości i możliwości iPoda.
 
